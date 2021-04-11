@@ -1,4 +1,4 @@
-from .models import USerProfile
+from .models import USerProfile, task
 from rest_framework import serializers
 
 
@@ -19,3 +19,9 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
         return user
+
+
+class TastSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = task
+        fields = ['id', 'body']
