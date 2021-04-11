@@ -19,9 +19,10 @@ class UserProfileManager(BaseUserManager):
         # create anew user object
         user = self.model(
             email=self.normalize_email(email),
+
         )
         # create new pass
-        user.set_password(password)
+        user.set_password()
         user.save(using=self._db)
         return user
 
@@ -35,6 +36,7 @@ class UserProfileManager(BaseUserManager):
 
         # make this user an admin
         user.is_superuser = True
+        user.set_password(password)
         user.is_staff = True
         user.save(using=self._db)
         return user
@@ -63,7 +65,7 @@ class task(models.Model):
     model to create single task
     """
     body = models.TextField(max_length=255, null=True, blank=True)
-    create_at=models.DateTimeField(auto_now_add=True)
+    # create_at=models.DateTimeField(auto_now_add=True)
     completed = models.BooleanField(default=False)
 
     def __str__(self):

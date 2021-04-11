@@ -21,7 +21,7 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-class TastSerializer(serializers.ModelSerializer):
+class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = task
         fields = ['id', 'body']
