@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 
+from django_timestamps.softDeletion import SoftDeletionModel
+from django_timestamps.timestamps import TimestampsModel
+
 
 # Create your models here.
 class UserProfileManager(BaseUserManager):
@@ -22,7 +25,7 @@ class UserProfileManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password):
+    def create_superuser(self, email, password=None):
         """"
         create and save new superuser with given details
         """
@@ -55,4 +58,16 @@ class USerProfile(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
+class task(models.Model):
+    """
+    model to create single task
+    """
+    body = models.TextField(max_length=255, null=True, blank=True)
+    create_at=models.DateTimeField(auto_now_add=True)
+    completed = models.BooleanField(default=False)
 
+    def __str__(self):
+        """
+        What to show when we output an object as a string
+        """
+        return self.body
