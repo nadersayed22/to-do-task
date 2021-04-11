@@ -53,3 +53,6 @@ class USerProfile(AbstractBaseUser, PermissionsMixin):
         """
 
         return self.email
+
+
+
