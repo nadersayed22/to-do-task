@@ -42,7 +42,6 @@ class USerProfile(AbstractBaseUser, PermissionsMixin):
     a user profile in our system
     """
     email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=255)
     is_superuser = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     objects = UserProfileManager()
