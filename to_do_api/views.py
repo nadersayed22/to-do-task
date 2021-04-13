@@ -2,7 +2,8 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
-
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.settings import api_settings
 
 from .serializer import UserSerializer, TaskSerializer
 from .models import UserProfile, Task
@@ -31,3 +32,10 @@ class TaskRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     """doing delete & update & put  & get detail """
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
+
+
+class UserLoginObtainView(ObtainAuthToken):
+    """
+    handle create user auth tokens
+    """
+    renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
