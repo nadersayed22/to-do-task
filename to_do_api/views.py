@@ -2,26 +2,26 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import generics
 from .serializer import UserSerializer, TaskSerializer
-from .models import USerProfile, task
+from .models import UserProfile, Task
 
 
-class USerViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.ModelViewSet):
     """
     doing CRUD operation using viewset
     """
     serializer_class = UserSerializer
-    queryset = USerProfile.objects.all()
+    queryset = UserProfile.objects.all()
 
 
-class TasklistApi(generics.ListCreateAPIView):
+class TaskListCreateAPIView(generics.ListCreateAPIView):
     """
     doing list & Create using post & get  method
     """
     serializer_class = TaskSerializer
-    queryset = task.objects.all()
+    queryset = Task.objects.all().order_by('-updated_at')
 
 
-class DetailAPi(generics.RetrieveUpdateDestroyAPIView):
-    """doing delete & update & put """
+class TaskRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    """doing delete & update & put  & get detail """
     serializer_class = TaskSerializer
-    queryset = task.objects.all()
+    queryset = Task.objects.all()

@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password': {'write_only': True, 'style': {'input_type': 'password'}}
         }
-         
+
     def create_user_serializer(self, data):
         """serialize new user """
         user = UserProfile(email=data['email'], password=data['password'])
