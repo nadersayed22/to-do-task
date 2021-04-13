@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 
-from django_timestamps.softDeletion import SoftDeletionModel
 from django_timestamps.timestamps import TimestampsModel
 
 
@@ -42,15 +41,20 @@ class UserProfileManager(BaseUserManager):
         return user
 
 
-class USerProfile(AbstractBaseUser, PermissionsMixin):
+class UserProfile(AbstractBaseUser, PermissionsMixin, TimestampsModel):
     """
     a user profile in our system
     """
     email = models.EmailField(max_length=255, unique=True)
     is_superuser = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     objects = UserProfileManager()
     USERNAME_FIELD = 'email'
+
+    class Meta:
+        verbose_name = "User Profile"
+        verbose_name_plural = "User Profiles"
 
     def __str__(self):
         """
@@ -60,11 +64,11 @@ class USerProfile(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
-class task(models.Model):
+class Task(models.Model):
     """
     model to create single task
     """
-    body = models.TextField(max_length=255, null=True, blank=True)
+    body = models.TextField(max_length=1000)
     # create_at=models.DateTimeField(auto_now_add=True)
     completed = models.BooleanField(default=False)
 
