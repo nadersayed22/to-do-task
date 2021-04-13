@@ -18,7 +18,7 @@ class TaskListCreateAPIView(generics.ListCreateAPIView):
     doing list & Create using post & get  method
     """
     serializer_class = TaskSerializer
-    queryset = Task.objects.all().order_by('-updated_at')
+    queryset = Task.objects.all().order_by('-modified_at')
 
 
 class TaskRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):

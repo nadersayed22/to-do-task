@@ -3,11 +3,9 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext as _
 from .models import UserProfile, Task
 
-from django.contrib.auth.models import Group
-
 
 # Register your models here.
-@admin.ModelAdmin(UserProfile)
+@admin.register(UserProfile)
 class UserProfileModelAdmin(BaseUserAdmin):
     add_form_template = 'core/add_user.html'
     ordering = ['id']

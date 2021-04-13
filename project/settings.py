@@ -60,6 +60,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR,'to_do_react/build'),
+            os.path.join(BASE_DIR, 'templates/'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -126,7 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'to_do_react/build/static'),
-    os.path.join(BASE_DIR, 'templates/'),
+
 ]
 
 # Default primary key field type
@@ -135,4 +136,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AUTH_USER_MODEL = 'to_do_api.USerProfile'
+AUTH_USER_MODEL = 'to_do_api.UserProfile'
