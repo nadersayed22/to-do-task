@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import generics
+from rest_framework.authentication import TokenAuthentication
+
+
 from .serializer import UserSerializer, TaskSerializer
 from .models import UserProfile, Task
+from .permission import UpdateOwnProfile
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -11,6 +15,8 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     serializer_class = UserSerializer
     queryset = UserProfile.objects.all()
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (UpdateOwnProfile,)
 
 
 class TaskListCreateAPIView(generics.ListCreateAPIView):
