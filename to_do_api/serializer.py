@@ -1,27 +1,22 @@
-from .models import USerProfile, task
+from .models import UserProfile, Task
 from rest_framework import serializers
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = USerProfile
+        model = UserProfile
         fields = ['id', 'email', 'password']
         extra_kwargs = {
-            'password': {'write_only': True, 'style': {'input_type': 'password'}
-                         }}
-
+            'password': {'write_only': True, 'style': {'input_type': 'password'}}
+        }
+         
     def create_user_serializer(self, data):
         """serialize new user """
-        user = USerProfile(
-            email=data['email'],
-            password=data['password']
-
-        )
-
+        user = UserProfile(email=data['email'], password=data['password'])
         return user
 
 
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
-        model = task
+        model = Task
         fields = ['id', 'body']
