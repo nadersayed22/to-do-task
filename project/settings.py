@@ -126,6 +126,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'to_do_react/build/static'),
+    os.path.join(BASE_DIR, 'templates/'),
 ]
 
 # Default primary key field type
