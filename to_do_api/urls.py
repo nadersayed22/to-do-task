@@ -1,12 +1,12 @@
-from .views import USerViewSet , TasklistApi , DetailAPi
+from .views import UserViewSet, TaskListCreateAPIView, TaskRetrieveUpdateDestroyAPIView
 from rest_framework import routers
 from django.urls import path, include
 
 router = routers.DefaultRouter()
-router.register('profile', USerViewSet)
+router.register('profile', UserViewSet)
 
 urlpatterns = [
-    path('<int:pk>/',DetailAPi.as_view(),name="detail_task"),
-    path("",TasklistApi.as_view(),name="list_tasks"),
+    path('todos/<int:pk>/', TaskRetrieveUpdateDestroyAPIView.as_view(), name="detail_task"),
+    path("todos/", TaskListCreateAPIView.as_view(), name="list_tasks"),
     path("", include(router.urls))
 ]
