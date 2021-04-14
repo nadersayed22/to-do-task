@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'to_do_api',
     'rest_framework',
+    'corsheaders',
     'rest_framework.authtoken',
 ]
 
@@ -52,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -138,3 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'to_do_api.UserProfile'
+CORS_ALLOWED_ORIGINS = [
+
+    "http://localhost:3000"
+]
