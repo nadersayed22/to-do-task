@@ -7,38 +7,38 @@ and delete them. With an admin panel where the admin can manage the registered u
  
 ## Go and clone to_do_task  app's repo.
 
-2. Create & Run a virtual environment for this app.
+1. Create & Run a virtual environment for this app.
 
         Open your terminal, go to the wall app's cloned repo's directory, and run this command
 
-1. Make sure you installed virtualenv
+2. Make sure you installed virtualenv
 
        pip install --upgrade virtualenv
 
-2. Activate the wallvenv virtual environment
+3. Activate the to_do_task virtual environment
  
        source to_do_task/bin/activate
 
 
-3. Install all of the needed packages.
+4. Install all of the needed packages.
 
        From your terminal running your to_do_taskvenv, run the following command
 
        pip install -r requirements.txt
 
-4. If you'll use my test db, you don't need this step.
+5. If you'll use my test db, you don't need this step.
 
 ## Run the migrations
 
-      python manage.py makemigrations
-      python manage.py migrate
+       python manage.py makemigrations
+       python manage.py migrate
 
 
-5. Now, your configs are completed just run the application.
+6. Now, your configs are completed just run the application.
 
        python manage.py runserver
 
-6. use this links to router in project 
+##  use this links to router in project 
 
 ### to admin panal 
      http://127.0.0.1:8000/admin/
